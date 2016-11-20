@@ -1,0 +1,63 @@
+{
+  "name": "vscode-uppercase",
+  "displayName": "uppercase",
+  "description": "Convert selection to uppercase",
+  "version": "0.0.1",
+  "author": "Rui Quelhas <rfpquelhas@gmail.com> (https://www.ruiquelhas.xyz)",
+  "publisher": "ruiquelhas",
+  "engines": {
+    "node": "^6.3.0",
+    "vscode": "^1.7.1"
+  },
+  "categories": [
+    "Formatters",
+    "Keymaps",
+    "Productivity"
+  ],
+  "activationEvents": [
+    "onCommand:uppercase.toUpperCase"
+  ],
+  "main": "./lib/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "uppercase.toUpperCase",
+        "title": "Convert selection to uppercase"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "uppercase.toUpperCase",
+        "key": "alt+shift+u",
+        "mac": "alt+shift+u"
+      }
+    ]
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "fs-promise": "^1.0.0",
+    "mocha": "^3.1.2",
+    "proxyquire": "^1.7.10",
+    "standard": "^8.5.0",
+    "testdouble": "^1.9.0",
+    "vscode": "^1.0.3"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ruiquelhas/vscode-uppercase/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruiquelhas/vscode-uppercase.git"
+  },
+  "homepage": "https://github.com/ruiquelhas/vscode-uppercase#readme",
+  "keywords": [
+    "case",
+    "extension",
+    "uppercase",
+    "vscode"
+  ]
+}
