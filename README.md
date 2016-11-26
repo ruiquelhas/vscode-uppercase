@@ -2,6 +2,7 @@
 Convert selection to uppercase in [Visual Studio Code](https://github.com/Microsoft/vscode).
 
 [![Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
+[![Travis](https://img.shields.io/travis/ruiquelhas/vscode-uppercase.svg?style=flat-square)](https://travis-ci.org/ruiquelhas/vscode-uppercase)
 
 ## How it works
 
