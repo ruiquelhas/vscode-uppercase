@@ -15,4 +15,6 @@ before_install:
       sleep 3;
     fi
 
+after_success: npm run report-coverage
+
 sudo: false

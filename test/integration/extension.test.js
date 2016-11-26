@@ -5,7 +5,7 @@ const assert = require('assert')
 const fs = require('fs-promise')
 const os = require('os')
 const path = require('path')
-const uppercase = require('../../')
+const uppercase = require('extension')
 
 suite('integration tests', () => {
   let editor

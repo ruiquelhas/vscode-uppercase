@@ -34,13 +34,21 @@
     ]
   },
   "scripts": {
+    "check-coverage": "npm run instrument && ISTANBUL_REPORT_DIR=coverage ISTANBUL_REPORTERS='text-summary,html,lcov' npm run test-instrumented",
+    "instrument": "istanbul instrument lib/ -o instrumented/",
     "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "node ./node_modules/vscode/bin/test"
+    "report-coverage": "npm run check-coverage && cat coverage/lcov.info | codecov",
+    "test": "NODE_PATH=lib node ./node_modules/vscode/bin/test",
+    "test-instrumented": "NODE_PATH=instrumented NODE_ENV=coverage node ./node_modules/vscode/bin/test && rimraf instrumented"
   },
   "devDependencies": {
+    "codecov.io": "^0.1.6",
     "fs-promise": "^1.0.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
+    "mocha-istanbul": "^0.3.0",
     "proxyquire": "^1.7.10",
+    "rimraf": "^2.5.4",
     "standard": "^8.5.0",
     "testdouble": "^1.9.0",
     "vscode": "^1.0.3"

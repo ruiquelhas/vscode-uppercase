@@ -4,7 +4,7 @@ const { Position, Range, Selection } = require('vscode')
 const assert = require('assert')
 const proxyquire = require('proxyquire')
 const td = require('testdouble')
-const uppercase = require('../../')
+const uppercase = require('extension')
 
 suite('unit tests', () => {
   teardown('reset fakes', () => {
@@ -16,7 +16,7 @@ suite('unit tests', () => {
       const context = { subscriptions: [] }
       const disposable = { foo: 'bar' }
       const registerTextEditorCommand = td.function()
-      const uppercase = proxyquire('../../', {
+      const uppercase = proxyquire('extension', {
         vscode: {
           commands: { registerTextEditorCommand }
         }
