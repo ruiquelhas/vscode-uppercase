@@ -2,6 +2,7 @@
 
 const { Position, Range, Selection } = require('vscode')
 const assert = require('assert')
+const isEqual = require('lodash.isequal')
 const proxyquire = require('proxyquire')
 const td = require('testdouble')
 const uppercase = require('extension')
@@ -49,12 +50,26 @@ suite('unit tests', () => {
       })
     })
 
-    test('does nothing for selections not containing alphabetic characters', () => {
-      const selection = new Selection(new Position(0, 0), new Position(0, 2))
+    test('does nothing for empty selections', () => {
+      const selection = new Selection(new Position(0, 0), new Position(0, 0))
+      const range = new Range(selection.start, selection.end)
       const editor = { document: { getText }, edit, selections: [selection] }
 
       td.when(edit(td.callback({ replace }))).thenResolve(true)
-      td.when(getText(td.matchers.isA(Range))).thenReturn(' 1*')
+      td.when(getText(td.matchers.argThat(r => isEqual(r, range)))).thenReturn('')
+
+      return uppercase.toUpperCase(editor).then(() => {
+        td.verify(replace(), { ignoreExtraArgs: true, times: 0 })
+      })
+    })
+
+    test('does nothing for selections not containing alphabetic characters', () => {
+      const selection = new Selection(new Position(0, 0), new Position(0, 2))
+      const range = new Range(selection.start, selection.end)
+      const editor = { document: { getText }, edit, selections: [selection] }
+
+      td.when(edit(td.callback({ replace }))).thenResolve(true)
+      td.when(getText(td.matchers.argThat(r => isEqual(r, range)))).thenReturn(' 1*')
 
       return uppercase.toUpperCase(editor).then(() => {
         td.verify(replace(), { ignoreExtraArgs: true, times: 0 })
@@ -98,6 +113,12 @@ suite('unit tests', () => {
       return uppercase.toUpperCase(editor).then(() => {
         td.verify(replace(selection, 'FOO\nBAR'), { times: 1 })
       })
+    })
+  })
+
+  suite('deactivate', () => {
+    test('returns `undefined`', () => {
+      assert.equal(uppercase.deactivate(), undefined)
     })
   })
 })

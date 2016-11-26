@@ -45,6 +45,7 @@
     "codecov.io": "^0.1.6",
     "fs-promise": "^1.0.0",
     "istanbul": "^0.4.5",
+    "lodash.isequal": "^4.4.0",
     "mocha": "^3.1.2",
     "mocha-istanbul": "^0.3.0",
     "proxyquire": "^1.7.10",
