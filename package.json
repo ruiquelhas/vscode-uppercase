@@ -12,7 +12,7 @@
   "categories": [
     "Formatters",
     "Keymaps",
-    "Productivity"
+    "Other"
   ],
   "activationEvents": [
     "onCommand:uppercase.toUpperCase"
