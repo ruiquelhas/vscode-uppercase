@@ -26,5 +26,8 @@ For any code addition or change, follow the [style guide](http://standardjs.com/
 $ npm t
 ```
 
+### Logo
+Extension icon provided by [Christian Oliff](https://github.com/coliff).
+
 ## License
 MIT
