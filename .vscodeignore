@@ -2,7 +2,8 @@
 .vscode-test/**
 coverage/**
 instrumented/**
-static/**
 test/**
 .gitignore
 .travis.yml
+static/palette.gif
+static/shortcut.gif
