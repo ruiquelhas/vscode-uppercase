@@ -2,7 +2,7 @@
   "name": "vscode-uppercase",
   "displayName": "uppercase",
   "description": "Convert selection to uppercase",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "icon": "static/icon.png",
   "author": "Rui Quelhas <rfpquelhas@gmail.com> (https://www.ruiquelhas.xyz)",
   "publisher": "ruiquelhas",
