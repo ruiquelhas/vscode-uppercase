@@ -36,11 +36,14 @@
   },
   "scripts": {
     "lint": "standard .",
-    "test": "node test/runTest"
+    "test": "node test/runTest",
+    "coverage:lcov": "c8 --check-coverage --reporter lcov npm run test",
+    "coverage:text": "c8 --check-coverage npm run test"
   },
   "devDependencies": {
     "@types/vscode": "^1.74.0",
     "@vscode/test-electron": "^2.2.1",
+    "c8": "^7.12.0",
     "glob": "^8.0.3",
     "lodash.isequal": "^4.5.0",
     "mocha": "^10.1.0",

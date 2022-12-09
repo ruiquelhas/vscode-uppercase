@@ -1,0 +1,33 @@
+name: coverage
+run-name: Generating and uploading coverage report
+on: push
+jobs:
+  generate-coverage-text-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - uses: GabrielBB/xvfb-action@v1.0
+        with: 
+          # prints the coverage report to stdout
+          run: npm run coverage:text
+  
+  upload-coverage-lcov-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - uses: GabrielBB/xvfb-action@v1.0
+        with: 
+          # saves the coverage report at coverage/lcov.info
+          run: npm run coverage:lcov
+      - uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: coverage/lcov.info
