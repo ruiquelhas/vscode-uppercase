@@ -3,25 +3,29 @@
 const { Position, Range, Selection } = require('vscode')
 const assert = require('assert')
 const isEqual = require('lodash.isequal')
-const proxyquire = require('proxyquire')
 const td = require('testdouble')
-const uppercase = require('extension')
+
+let uppercase = require('../../../lib/extension')
 
 suite('unit tests', () => {
-  teardown('reset fakes', () => {
-    td.reset()
-  })
-
   suite('activate', () => {
+    let registerTextEditorCommand
+
+    setup('replace dependencies with test doubles', () => {
+      registerTextEditorCommand = td.function()
+
+      td.replace('vscode', { commands: { registerTextEditorCommand } })
+
+      uppercase = require('../../../lib/extension')
+    })
+
+    teardown('restore original dependencies', () => {
+      td.reset()
+    })
+
     test('calls the toUpperCase command', () => {
       const context = { subscriptions: [] }
       const disposable = { foo: 'bar' }
-      const registerTextEditorCommand = td.function()
-      const uppercase = proxyquire('extension', {
-        vscode: {
-          commands: { registerTextEditorCommand }
-        }
-      })
 
       td.when(registerTextEditorCommand('uppercase.toUpperCase', uppercase.toUpperCase))
         .thenReturn(disposable)
@@ -35,10 +39,16 @@ suite('unit tests', () => {
   suite('toUpperCase', () => {
     let edit, getText, replace
 
-    setup('create fakes', () => {
+    setup('replace dependencies with test doubles', () => {
       edit = td.function()
       getText = td.function()
       replace = td.function()
+
+      uppercase = require('../../../lib/extension')
+    })
+
+    teardown('restore original dependencies', () => {
+      td.reset()
     })
 
     test('does nothing if there are no selections', () => {

@@ -7,8 +7,8 @@
   "author": "Rui Quelhas <rfpquelhas@gmail.com> (https://www.ruiquelhas.xyz)",
   "publisher": "ruiquelhas",
   "engines": {
-    "node": "^6.3.0",
-    "vscode": "^1.7.1"
+    "node": "^16.0.0",
+    "vscode": "^1.74.0"
   },
   "categories": [
     "Formatters",
@@ -35,25 +35,17 @@
     ]
   },
   "scripts": {
-    "check-coverage": "npm run instrument && ISTANBUL_REPORT_DIR=coverage ISTANBUL_REPORTERS='text-summary,html,lcov' npm run test-instrumented",
-    "instrument": "istanbul instrument lib/ -o instrumented/",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "report-coverage": "npm run check-coverage && cat coverage/lcov.info | codecov",
-    "test": "NODE_PATH=lib node ./node_modules/vscode/bin/test",
-    "test-instrumented": "NODE_PATH=instrumented NODE_ENV=coverage node ./node_modules/vscode/bin/test && rimraf instrumented"
+    "lint": "standard .",
+    "test": "node test/runTest"
   },
   "devDependencies": {
-    "codecov.io": "^0.1.6",
-    "fs-promise": "^1.0.0",
-    "istanbul": "^0.4.5",
-    "lodash.isequal": "^4.4.0",
-    "mocha": "^3.1.2",
-    "mocha-istanbul": "^0.3.0",
-    "proxyquire": "^1.7.10",
-    "rimraf": "^2.5.4",
-    "standard": "^8.5.0",
-    "testdouble": "^1.9.0",
-    "vscode": "^1.0.3"
+    "@types/vscode": "^1.74.0",
+    "@vscode/test-electron": "^2.2.1",
+    "glob": "^8.0.3",
+    "lodash.isequal": "^4.5.0",
+    "mocha": "^10.1.0",
+    "standard": "^17.0.0",
+    "testdouble": "^3.16.8"
   },
   "license": "MIT",
   "bugs": {

@@ -2,10 +2,10 @@
 
 const { Position, Range, Selection, window, workspace } = require('vscode')
 const assert = require('assert')
-const fs = require('fs-promise')
+const fs = require('fs/promises')
 const os = require('os')
 const path = require('path')
-const uppercase = require('extension')
+const uppercase = require('../../../lib/extension')
 
 suite('integration tests', () => {
   let editor
@@ -18,7 +18,7 @@ suite('integration tests', () => {
 
     const newFile = path.join(os.tmpdir(), 'foobar.txt')
 
-    return fs.createFile(newFile)
+    return fs.open(newFile, 'w+')
       .then(() => {
         return workspace.openTextDocument(newFile)
       })

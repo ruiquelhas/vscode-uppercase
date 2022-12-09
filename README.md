@@ -1,9 +1,8 @@
 # vscode-uppercase
 Convert selection to uppercase in [Visual Studio Code](https://github.com/Microsoft/vscode).
 
-[![Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
-[![Travis](https://img.shields.io/travis/ruiquelhas/vscode-uppercase.svg?style=flat-square)](https://travis-ci.org/ruiquelhas/vscode-uppercase)
-[![Codecov](https://img.shields.io/codecov/c/github/ruiquelhas/vscode-uppercase.svg?style=flat-square)](https://codecov.io/gh/ruiquelhas/vscode-uppercase)
+[![Style](https://github.com/ruiquelhas/vscode-uppercase/actions/workflows/lint.yml/badge.svg)](https://github.com/ruiquelhas/vscode-uppercase/actions/workflows/lint.yml)
+[![Tests](https://github.com/ruiquelhas/vscode-uppercase/actions/workflows/test.yml/badge.svg)](https://github.com/ruiquelhas/vscode-uppercase/actions/workflows/test.yml)
 
 ## How it works
 

@@ -1,7 +1,6 @@
 .vscode/**
 .vscode-test/**
 coverage/**
-instrumented/**
 test/**
 .gitignore
 .travis.yml
